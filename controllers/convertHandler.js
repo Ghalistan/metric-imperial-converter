@@ -1,7 +1,7 @@
 function ConvertHandler() {
   let regexNumber = /\d+(\.\d+)?(\/\d+(\.\d+)?)?/g
   let regexUnit = /[a-zA-Z]+$/g
-  let validUnit = ['gal', 'L', 'mi', 'km', 'lbs', 'kg']
+  let validUnit = ['gal', 'l', 'mi', 'km', 'lbs', 'kg']
 
   this.getNum = function (input) {
     let result;
@@ -29,8 +29,13 @@ function ConvertHandler() {
       return 'invalid unit'
     }
 
-    if (validUnit.includes(unit[0])) {
-      result = unit[0]
+    const unitLowerCase = unit[0].toLowerCase()
+    if (validUnit.includes(unitLowerCase)) {
+      if (unitLowerCase == 'l') {
+        result = unit[0].toUpperCase()
+      } else {
+        result = unitLowerCase
+      }
     } else {
       return 'invalid unit'
     }

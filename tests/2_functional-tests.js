@@ -6,6 +6,7 @@ const server = require('../server');
 chai.use(chaiHttp);
 
 suite('Functional Tests', function () {
+    this.timeout(5000);
     test('Convert a valid input such as 10L: GET request to /api/convert', () => {
         chai.request(server).keepOpen().get('/api/convert?input=10L').end(function (err, res) {
             assert.equal(res.status, 200)

@@ -1,6 +1,6 @@
 function ConvertHandler() {
   let regexNumber = /\d+(\.\d+)?(\/\d+(\.\d+)?)?/g
-  let regexUnit = /\w+/g
+  let regexUnit = /[a-zA-Z]+$/g
   let validUnit = ['gal', 'L', 'mi', 'km', 'lbs', 'kg']
 
   this.getNum = function (input) {
@@ -70,11 +70,8 @@ function ConvertHandler() {
 
   this.convert = function (initNum, initUnit) {
     const galToL = 3.78541;
-    const lToGal = 0.26417;
     const lbsToKg = 0.453592;
-    const kgToLbs = 2.20462;
     const miToKm = 1.60934;
-    const kmToMi = 0.62137;
     let result;
 
     switch (initUnit) {
@@ -82,29 +79,29 @@ function ConvertHandler() {
         result = initNum * galToL
         break
       case 'L':
-        result = initNum * lToGal
+        result = initNum / galToL
         break
       case 'mi':
         result = initNum * miToKm
         break
       case 'km':
-        result = initNum * kmToMi
+        result = initNum / miToKm
         break
       case 'lbs':
         result = initNum * lbsToKg
         break
       case 'kg':
-        result = initNum * kgToLbs
+        result = initNum / lbsToKg
         break
       default:
         throw new Error('Incorrect Unit')
     }
 
-    return result;
+    return parseFloat(result.toFixed(5));
   };
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
-    let result;
+    let result = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`
 
     return result;
   };

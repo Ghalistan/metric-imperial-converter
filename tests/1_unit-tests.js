@@ -66,7 +66,7 @@ suite('Unit Tests', function () {
     })
 
     test('Should correctly convert L to gal', () => {
-        assert.equal(convertHandler.convert('3', 'L'), 0.79251)
+        assert.equal(convertHandler.convert('3', 'L'), 0.79252)
     })
 
     test('Should correctly convert mi to km', () => {
@@ -74,11 +74,11 @@ suite('Unit Tests', function () {
     })
 
     test('Should correctly convert km to mi', () => {
-        assert.equal(convertHandler.convert('2', 'km'), 1.24274)
+        assert.equal(convertHandler.convert('2', 'km'), 1.24275)
     })
 
     test('Should correctly convert lbs to kg', () => {
-        assert.equal(convertHandler.convert('7', 'lbs'), 3.175144)
+        assert.equal(convertHandler.convert('7', 'lbs'), 3.17514)
     })
 
     test('Should correctly convert kg to lbs', () => {
